@@ -1,0 +1,15 @@
+class Auto:
+    def __init__(self, rekisteritunnus: str, huippunopeus: int):
+        self.rekisteritunnus = rekisteritunnus
+        self.huippunopeus = huippunopeus
+        self.nopeus = 0
+        self.kuljettu_matka = 0
+
+    def auton_tiedot(self):
+        print(f"Auton rekisteritunnus: {self.rekisteritunnus}\n"
+              f"Huippunopeus: {self.huippunopeus}\n"
+              f"Tämänhetkinen nopeus: {self.nopeus}\n"
+              f"Kuljettu matka: {self.kuljettu_matka}")
+             
+bemmi = Auto("ABC-123", 142)
+bemmi.auton_tiedot()
