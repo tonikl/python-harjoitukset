@@ -1,0 +1,30 @@
+class Auto:
+    def __init__(self, rekisteritunnus: str, huippunopeus: int):
+        self.rekisteritunnus = rekisteritunnus
+        self.huippunopeus = huippunopeus
+        self.nopeus = 0
+        self.kuljettu_matka = 0
+
+    def auton_tiedot(self):
+        print(f"Auton rekisteritunnus: {self.rekisteritunnus}\n"
+              f"Huippunopeus: {self.huippunopeus}\n"
+              f"Tämänhetkinen nopeus: {self.nopeus}\n"
+              f"Kuljettu matka: {self.kuljettu_matka}")
+
+    def kiihdyta(self, nopeuden_muutos: int):
+        if self.nopeus + nopeuden_muutos >= self.huippunopeus:
+            self.nopeus = self.huippunopeus
+
+        elif self.nopeus + nopeuden_muutos <= 0:
+            self.nopeus = 0
+
+        else:
+            self.nopeus = self.nopeus + nopeuden_muutos
+
+
+bemmi = Auto("ABC-123", 142)
+bemmi.kiihdyta(30)
+bemmi.kiihdyta(70)
+bemmi.kiihdyta(50)
+bemmi.kiihdyta(-200)
+print(f"{bemmi.nopeus} km/h")
