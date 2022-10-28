@@ -1,0 +1,28 @@
+class Hissi:
+    def __init__(self, alin_krs: int, ylin_krs: int, kerros_atm=1):
+        self.alin_krs = alin_krs
+        self.ylin_krs = ylin_krs
+        self.kerros_atm = kerros_atm
+
+    def kerros_ylos(self, kerrat):
+        for i in range(kerrat):
+            self.kerros_atm = self.kerros_atm + 1
+            print(f"Kerros: {self.kerros_atm}")
+
+    def kerros_alas(self, kerrat):
+        for i in range(kerrat):
+            self.kerros_atm = self.kerros_atm - 1
+            print(f"Kerros: {self.kerros_atm}")
+
+    def siirry_kerrokseen(self, kerros: int):
+        if kerros > self.kerros_atm:
+            kerros = kerros-self.kerros_atm
+            self.kerros_ylos(kerros)
+        elif kerros < self.kerros_atm:
+            kerros = self.kerros_atm-kerros
+            self.kerros_alas(kerros)
+
+
+hissi1 = Hissi(1, 7)
+hissi1.siirry_kerrokseen(7)
+hissi1.siirry_kerrokseen(1)
