@@ -1,0 +1,48 @@
+class Hissi:
+    def __init__(self, alin_krs: int, ylin_krs: int, kerros_atm=1):
+        self.alin_krs = alin_krs
+        self.ylin_krs = ylin_krs
+        self.kerros_atm = kerros_atm
+
+    def kerros_ylos(self, kerrat):
+        for i in range(kerrat):
+            self.kerros_atm = self.kerros_atm + 1
+            print(f"Kerros: {self.kerros_atm}")
+
+    def kerros_alas(self, kerrat):
+        for i in range(kerrat):
+            self.kerros_atm = self.kerros_atm - 1
+            print(f"Kerros: {self.kerros_atm}")
+
+    def siirry_kerrokseen(self, kerros: int):
+        if kerros > self.kerros_atm:
+            kerros = kerros-self.kerros_atm
+            self.kerros_ylos(kerros)
+        elif kerros < self.kerros_atm:
+            kerros = self.kerros_atm-kerros
+            self.kerros_alas(kerros)
+
+
+class Talo:
+    def __init__(self, alin_krs: int, ylin_krs: int, hissien_lkm: int):
+        self.alin_krs = alin_krs
+        self.ylin_krs = ylin_krs
+        Hissi.ylin_krs = self.ylin_krs
+        Hissi.alin_krs = self.alin_krs
+        self.hissien_lkm = hissien_lkm
+        self.hissit = []
+        for i in range(hissien_lkm):
+            self.hissit.append(Hissi(self.alin_krs, self.ylin_krs))
+
+    def aja_hissia(self, hissin_nro: int, kohdekerros: int):
+        self.hissin_nro = hissin_nro
+        self.kohdekerros = kohdekerros
+
+
+    def palohalytys(self):
+        for Hissi in self.hissit:
+            Hissi.siirry_kerrokseen(1)
+
+
+talo1 = Talo(1, 7, 4)
+talo1.palohalytys()
