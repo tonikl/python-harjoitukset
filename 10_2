@@ -1,5 +1,5 @@
 class Hissi:
-    def __init__(self, alin_krs: int, ylin_krs: int, kerros_atm = 5):
+    def __init__(self, alin_krs: int, ylin_krs: int, kerros_atm = 1):
         self.alin_krs = alin_krs
         self.ylin_krs = ylin_krs
         self.kerros_atm = kerros_atm
