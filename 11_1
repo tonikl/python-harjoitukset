@@ -1,0 +1,35 @@
+class Julkaisu:
+    def __init__(self, nimi: str):
+        self.nimi = nimi
+
+    def tulosta_tiedot(self):
+        print(f"Nimi: {self.nimi}")
+
+
+class Lehti(Julkaisu):
+    def __init__(self, nimi, paatoimittaja: str):
+        self.paatoimittaja = paatoimittaja
+        super().__init__(nimi)
+
+    def tulosta_tiedot(self):
+        super().tulosta_tiedot()
+        print(f"Päätoimittaja: {self.paatoimittaja}\n")
+# lisätty rivinvaihtoja - näyttää siistimmältä konsolissa
+
+
+class Kirja(Julkaisu):
+    def __init__(self, nimi, kirjoittaja: str, sivumaara: int):
+        self.kirjoittaja = kirjoittaja
+        self.sivumaara = sivumaara
+        super().__init__(nimi)
+
+    def tulosta_tiedot(self):
+        super().tulosta_tiedot()
+        print(f"Kirjoittaja: {self.kirjoittaja}\n"
+              f"Sivumäärä: {self.sivumaara}")
+
+
+lehti1 = Lehti("Aku Ankka", "Aki Hyyppä")
+kirja1 = Kirja("Hytti n:o 6", "Rosa Liksom", 200)
+lehti1.tulosta_tiedot()
+kirja1.tulosta_tiedot()
