@@ -1,0 +1,44 @@
+class Auto:
+    def __init__(self, rekisteritunnus: str, huippunopeus: int):
+        self.rekisteritunnus = rekisteritunnus
+        self.huippunopeus = huippunopeus
+        self.nopeus = 0
+        self.kuljettu_matka = 0
+
+    def kiihdyta(self, nopeuden_muutos: int):
+        if self.nopeus + nopeuden_muutos >= self.huippunopeus:
+            self.nopeus = self.huippunopeus
+
+        elif self.nopeus + nopeuden_muutos <= 0:
+            self.nopeus = 0
+
+        else:
+            self.nopeus = self.nopeus + nopeuden_muutos
+
+    def kulje(self, tunnit: int):
+        self.kuljettu_matka += self.nopeus * tunnit
+
+
+class Sahkoauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, akkukapasiteetti: float):
+        self.akkukapasiteetti = akkukapasiteetti
+        super().__init__(rekisteritunnus, huippunopeus)
+
+
+class Polttomoottoriauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, bensatankki: float):
+        self.bensatankki = bensatankki
+        super().__init__(rekisteritunnus, huippunopeus)
+
+
+tesla = Sahkoauto("ABC-15", 180, 52.5)
+bemmi = Polttomoottoriauto("ACD-123", 165, 32.3)
+
+bemmi.nopeus = 80
+tesla.nopeus = 75
+
+bemmi.kulje(3)
+tesla.kulje(3)
+
+print(f"{bemmi.kuljettu_matka}km")
+print(f"{tesla.kuljettu_matka}km")
