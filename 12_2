@@ -1,0 +1,13 @@
+import requests
+
+syote = input("Anna paikkakunnan nimi: ").title()
+api = "68cd7609f075253b6790f4718b49723e"
+linkki = (f"http://api.openweathermap.org/geo/1.0/direct?q={syote}&limit=5&appid={api}")
+vastaus = requests.get(linkki).json()
+lat = (vastaus[0]['lat'])
+lon = (vastaus[0]['lon'])
+
+linkki2 = (f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api}")
+vastaus2 = requests.get(linkki2).json()
+lampotila = round(vastaus2['main']['temp'] - 273.15)
+print(f"Paikkakunta: {syote}\nLämpötila: {lampotila} celsiusastetta")
